@@ -1,8 +1,9 @@
 import React from 'react';
 
+
 const Cart = (props) => {
     const cart = props.cart;
-    const total = cart.reduce((total , prd)=> total + prd.price, 0);
+    const total = cart.reduce((total , prd)=> total + prd.price * prd.quantity, 0);
     //or
     // let total =0;
     // for(let i =  0; i < cart.length;i++){
@@ -35,6 +36,10 @@ const Cart = (props) => {
             <p>Shipping Cost : {Shipping}</p>
             <p>Tex + Vat :{formatNumber(tex)}</p>
             <p>Total Price : ${formatNumber(total + Shipping + tex)}</p>
+            <br/>
+           {
+              props.children
+           }
         </div>
     );
 };
